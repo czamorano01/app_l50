@@ -1,0 +1,18 @@
+# Copiar a ".env" para pruebas locales (cargar con readRenviron(".env") o
+# Sys.setenv). En GitHub Actions estas mismas claves van como "Secrets"
+# del repositorio (ver README.md, sección 7). NUNCA subir ".env" real.
+
+# --- Azure Blob Storage ---
+AZURE_STORAGE_ACCOUNT=
+AZURE_STORAGE_KEY=
+AZURE_CONTAINER_NAME=pejegallo-etl
+
+# --- Azure Database for PostgreSQL (Flexible Server) ---
+AZURE_PG_HOST=<tu-servidor>.postgres.database.azure.com
+AZURE_PG_PORT=5432
+AZURE_PG_DBNAME=pejegallo_db
+AZURE_PG_USER=
+AZURE_PG_PASSWORD=
+
+# --- Ruta local del archivo fuente ---
+LOCAL_SOURCE_FILE=data/raw/pejegallo_L50_2024.xlsx

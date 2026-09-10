@@ -1,0 +1,55 @@
+name: ETL Pejegallo L50 (R -> Azure)
+
+on:
+  schedule:
+    # Diario a las 07:00 UTC (04:00 Chile continental aprox., ajustar según DST)
+    - cron: "0 7 * * *"
+  workflow_dispatch: {}   # permite ejecutarlo manualmente desde la pestaña Actions
+
+jobs:
+  etl:
+    runs-on: ubuntu-latest
+    env:
+      AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT }}
+      AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY }}
+      AZURE_CONTAINER_NAME: ${{ secrets.AZURE_CONTAINER_NAME }}
+      AZURE_PG_HOST: ${{ secrets.AZURE_PG_HOST }}
+      AZURE_PG_PORT: ${{ secrets.AZURE_PG_PORT }}
+      AZURE_PG_DBNAME: ${{ secrets.AZURE_PG_DBNAME }}
+      AZURE_PG_USER: ${{ secrets.AZURE_PG_USER }}
+      AZURE_PG_PASSWORD: ${{ secrets.AZURE_PG_PASSWORD }}
+      LOCAL_SOURCE_FILE: data/raw/pejegallo_L50_2024.xlsx
+
+    steps:
+      - name: Checkout repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: "4.3"
+
+      - name: Instalar dependencias del sistema (libpq, libssl, libxml2)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libpq-dev libssl-dev libxml2-dev libcurl4-openssl-dev
+
+      - name: Cachear paquetes R
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: r-pkgs-${{ hashFiles('R/install_packages.R') }}
+
+      - name: Instalar paquetes R
+        run: Rscript R/install_packages.R
+
+      - name: Etapa 1 - Extract (ingesta a Azure Blob Storage)
+        id: extract
+        run: Rscript R/extract.R
+
+      - name: Etapa 2 y 3 - Transform + Load (a Azure PostgreSQL)
+        run: Rscript R/load.R "${{ github.run_id }}"
+
+      - name: Resumen de la corrida
+        if: always()
+        run: echo "Pipeline pejegallo ejecutado - run_id ${{ github.run_id }}"
