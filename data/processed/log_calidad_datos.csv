@@ -1,7 +1,7 @@
 "run_id","regla","columna","registros_afectados","accion_tomada","detalle","ejecutado_en"
-"20260910T195140","descarte_filas_no_especimen_machos","Collection Code",32,"descartado","Residuo de tabla de frecuencias pegada en el rango de datos",2026-09-10 19:51:40.466576
-"20260910T195140","descarte_filas_no_especimen_hembras","Collection Code",29,"descartado","Residuo de tabla de frecuencias pegada en el rango de datos",2026-09-10 19:51:40.466576
-"20260910T195140","limpieza_centinela_peso_total","Total Weight (gr)",25,"conservado","'-' / '?' / vacío -> NA; fila se conserva",2026-09-10 19:51:40.466576
-"20260910T195140","limpieza_centinela_peso_higado","Liver Weight (gr)",92,"conservado","'-' / '?' / vacío -> NA; fila se conserva",2026-09-10 19:51:40.466576
-"20260910T195140","conservar_na_precaudal","PreCaudal Length [in cm]",3,"conservado","Se mantiene NA; solo afecta proporcion_morfometrica",2026-09-10 19:51:40.466576
-"20260910T195140","peso_total_biologicamente_imposible","Total Weight (gr)",7,"imputado","Peso somatico neto negativo o Fulton K > 3 -> Total Weight puesto a NA",2026-09-10 19:51:40.466576
+"20260910T204317","descarte_filas_no_especimen_machos","Collection Code",32,"descartado","Residuo de tabla de frecuencias pegada en el rango de datos",2026-09-10 20:43:17.975528
+"20260910T204317","descarte_filas_no_especimen_hembras","Collection Code",29,"descartado","Residuo de tabla de frecuencias pegada en el rango de datos",2026-09-10 20:43:17.975528
+"20260910T204317","limpieza_centinela_peso_total","Total Weight (gr)",25,"conservado","'-' / '?' / vacío -> NA; fila se conserva",2026-09-10 20:43:17.975528
+"20260910T204317","limpieza_centinela_peso_higado","Liver Weight (gr)",92,"conservado","'-' / '?' / vacío -> NA; fila se conserva",2026-09-10 20:43:17.975528
+"20260910T204317","conservar_na_precaudal","PreCaudal Length [in cm]",3,"conservado","Se mantiene NA; solo afecta proporcion_morfometrica",2026-09-10 20:43:17.975528
+"20260910T204317","peso_total_biologicamente_imposible","Total Weight (gr)",7,"imputado","Peso somatico neto negativo o Fulton K > 3 -> Total Weight puesto a NA",2026-09-10 20:43:17.975528

@@ -115,7 +115,7 @@ p(L) = 1 / (1 + exp(-k · (L - L50)))
 `L50` es la longitud a la que la probabilidad de estar maduro es 50%.
 El ajuste se hace por máxima verosimilitud (`scipy.optimize`) y el
 intervalo de confianza de `L50` se estima por bootstrap (remuestreo
-con reemplazo, 300 iteraciones). Desde la barra lateral se puede
+con reemplazo, 100 iteraciones). Desde la barra lateral se puede
 elegir si la curva se ajusta con **longitud total** o **longitud
 precaudal**.
 

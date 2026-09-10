@@ -80,7 +80,7 @@ def _fit_l50(L, y, x0=None):
 
 
 @st.cache_data(ttl=3600)
-def fit_l50_with_ci(L: np.ndarray, y: np.ndarray, n_boot: int = 300, seed: int = 42):
+def fit_l50_with_ci(L: np.ndarray, y: np.ndarray, n_boot: int = 100, seed: int = 42):
     """Ajusta la curva sigmoidea y calcula una banda de confianza por bootstrap."""
     l50_hat, k_hat = _fit_l50(L, y)
 
