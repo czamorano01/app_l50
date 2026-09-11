@@ -1,5 +1,5 @@
 streamlit==1.37.0
 pandas>=2.2.2,<3
-plotly>=5.22.0,<7
+plotly>=5.22.0,<6
 scipy>=1.13.1,<2
 statsmodels>=0.14.2,<1
